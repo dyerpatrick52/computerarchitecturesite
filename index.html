@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CEG2136 Midterm Study Guide</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6;
+            color: #333;
+            scroll-behavior: smooth;
+        }
+        .header {
+            background-color: #c8102e; /* uOttawa Red */
+            color: #ffffff;
+            padding: 1.5rem 2rem;
+            text-align: center;
+            border-bottom: 5px solid #a00c24;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        .header p {
+            margin: 0.5rem 0 0;
+            font-size: 1.2rem;
+        }
+        .navbar {
+            position: sticky;
+            top: 0;
+            background-color: #333;
+            padding: 0.75rem 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .navbar-container {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar-container li {
+            margin: 0 20px;
+        }
+        .navbar-container a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .navbar-container a:hover {
+            background-color: #555;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        .section {
+            background: #ffffff;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .section h2 {
+            font-size: 2rem;
+            color: #c8102e;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+        }
+        .tab-content h3 {
+            font-size: 1.5rem;
+            color: #333;
+            margin-top: 1.5rem;
+            border-left: 4px solid #c8102e;
+            padding-left: 10px;
+        }
+        .tab-content h4 {
+            font-size: 1.2rem;
+            color: #444;
+            margin-top: 1rem;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 0.5rem;
+        }
+        .focus-box {
+            background-color: #fff9e6;
+            border: 1px solid #ffecb3;
+            border-left: 5px solid #ffc107;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 5px;
+        }
+        code {
+            background-color: #eee;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: "Courier New", Courier, monospace;
+        }
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            background-color: #333;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <h1>CEG2136: Computer Architecture I</h1>
+        <p>Your Comprehensive Midterm Study Guide 🚀</p>
+    </header>
+
+    <nav class="navbar">
+        <ul class="navbar-container">
+            <li><a href="#section1">💻 Digital Logic</a></li>
+            <li><a href="#section2">🔢 Data Representation</a></li>
+            <li><a href="#section3">⚙️ Computer Architecture</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <section id="section1" class="section">
+            <h2>💻 Section 1: Digital Logic and Circuit Design</h2>
+            <div class="tab-content">
+                <h3>Tab 1: Boolean Algebra & K-Maps</h3>
+                <p>This is the mathematics behind digital circuits. Mastering simplification is key to creating efficient hardware.</p>
+                
+                <h4>Key Concepts</h4>
+                <ul>
+                    [cite_start]<li><strong>Axioms & Theorems</strong>: Key rules include the identity element ($A \cdot 1 = A$), complement ($A + A' = 1$), and the distributive law. [cite: 8280, 8281, 8282, 8283]</li>
+                    [cite_start]<li><strong>DeMorgan's Theorem</strong>: A critical tool for simplification. [cite: 6308, 6665]
+                        <ul>
+                            [cite_start]<li>$\overline{A \cdot B} = \overline{A} + \overline{B}$ [cite: 6310]</li>
+                            [cite_start]<li>$\overline{A + B} = \overline{A} \cdot \overline{B}$ [cite: 6311]</li>
+                        </ul>
+                    </li>
+                    [cite_start]<li><strong>Canonical Forms</strong>: Standard ways to write functions. [cite: 6361]
+                        <ul>
+                            <li><strong>Sum-of-Products (SOP)</strong>: The function is expressed as a sum of minterms. [cite_start]Example: $F(A,B,C)=\Sigma m(1,3,5,6,7)$. [cite: 6362, 8320]</li>
+                            <li><strong>Product-of-Sums (POS)</strong>: The function is expressed as a product of maxterms. [cite_start]Example: $F(A,B,C)=\Pi M(0,2,4)$. [cite: 8655]</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h4>Karnaugh Map (K-Map) Simplification</h4>
+                [cite_start]<p>A K-map is a graphical method for simplifying logic functions. [cite: 6405]</p>
+                <ul>
+                    <li><strong>Prime Implicant (PI)</strong>: An implicant that cannot be covered by a larger, more simplified implicant. [cite_start]The minimal SOP form is a sum of PIs. [cite: 6561, 8500]</li>
+                    <li><strong>Essential Prime Implicant (EPI)</strong>: A PI that covers at least one minterm ('1') that no other PI can cover. [cite_start]All EPIs must be in the final solution. [cite: 6563]</li>
+                    <li><strong>Don't Care Conditions (d)</strong>: Input combinations that will never occur. [cite_start]They can be used as 1s or 0s to create larger groups for simplification. [cite: 6740]</li>
+                </ul>
+
+                <div class="focus-box">
+                    <strong>What to Focus On</strong>: Be able to simplify expressions algebraically and with K-maps. Master identifying PIs and EPIs. Know how to use don't care conditions effectively.
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="tab-content">
+                <h3>Tab 2: Combinational Circuits</h3>
+                [cite_start]<p>These are "memoryless" circuits where the output depends only on the current inputs. [cite: 6799, 6801]</p>
+
+                <h4>Key Components</h4>
+                <ul>
+                    <li><strong>Adders</strong>:
+                        <ul>
+                            [cite_start]<li><strong>Half Adder</strong>: Adds two bits, producing a Sum ($A \oplus B$) and a Carry ($A \cdot B$). [cite: 6824, 6835, 6831]</li>
+                            <li><strong>Full Adder</strong>: Adds three bits (A, B, Carry-in). [cite_start]Can be built from two half adders and an OR gate. [cite: 6845, 6899]</li>
+                        </ul>
+                    </li>
+                    [cite_start]<li><strong>Decoders</strong>: Converts an n-bit input to one of up to $2^n$ unique outputs. [cite: 2462]</li>
+                    <li><strong>Multiplexers (MUX)</strong>: A data selector. [cite_start]It uses n select lines to route one of $2^n$ data inputs to a single output. [cite: 2502]</li>
+                </ul>
+
+                <div class="focus-box">
+                    <strong>What to Focus On</strong>: Understand how adders, decoders, and multiplexers work. A common exam question is implementing a Boolean function using a MUX of a specific size.
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="tab-content">
+                <h3>Tab 3: Sequential Circuits & FSMs</h3>
+                [cite_start]<p>These circuits have memory; their output depends on current inputs and the past sequence of inputs. [cite: 3048]</p>
+                
+                <h4>Finite State Machines (FSMs)</h4>
+                <ul>
+                    [cite_start]<li><strong>Mealy Machine</strong>: Output depends on both the current state and the current input. [cite: 3102]</li>
+                    [cite_start]<li><strong>Moore Machine</strong>: Output depends only on the current state. [cite: 3117]</li>
+                </ul>
+
+                <h4>Flip-Flops (FFs)</h4>
+                <p>These are the fundamental 1-bit memory elements. [cite_start]You must know their characteristic tables (next state) and excitation tables (inputs needed for a transition). [cite: 9257]</p>
+                <ul>
+                    <li><strong>D Flip-Flop</strong>: The output Q follows the D input on the clock edge. [cite_start]Characteristic equation: $Q_{next} = D$. [cite: 3097]</li>
+                    <li><strong>JK Flip-Flop</strong>: A versatile FF where J=K=1 causes the state to toggle. [cite_start]Characteristic equation: $Q_{next} = J\overline{Q} + \overline{K}Q$. [cite: 3093]</li>
+                    <li><strong>T Flip-Flop</strong>: Toggles the state if T=1. [cite_start]Characteristic equation: $Q_{next} = T \oplus Q$. [cite: 3097]</li>
+                </ul>
+                
+                <h4>Registers and Counters</h4>
+                <ul>
+                    [cite_start]<li><strong>Registers</strong>: A group of flip-flops used to store multiple bits of data. [cite: 2610]</li>
+                    [cite_start]<li><strong>Shift Registers</strong>: A chain of flip-flops where data can be shifted serially. [cite: 2799]</li>
+                    [cite_start]<li><strong>Counters</strong>: A register that goes through a predetermined sequence of states. [cite: 5450]</li>
+                </ul>
+
+                <div class="focus-box">
+                    <strong>What to Focus On</strong>: Practice the full sequential circuit design procedure (state diagram -> state table -> state assignment -> excitation table -> equations -> circuit). Designing a sequence detector is a classic problem.
+                </div>
+            </div>
+        </section>
+
+        <section id="section2" class="section">
+            <h2>🔢 Section 2: Data Representation and Arithmetic</h2>
+            <div class="tab-content">
+                <h3>Tab 1: Number Systems</h3>
+                
+                <h4>Key Concepts</h4>
+                <ul>
+                    [cite_start]<li><strong>Bases</strong>: Be proficient with Binary (base 2), Octal (base 8), Decimal (base 10), and Hexadecimal (base 16). [cite: 1320]</li>
+                    [cite_start]<li><strong>Conversions</strong>: You must be able to convert any number, including fractions, between these bases. [cite: 1325, 1404, 1405]
+                        <ul>
+                            [cite_start]<li><strong>Binary to Hex/Octal</strong>: Group bits into sets of 4 (for hex) or 3 (for octal). [cite: 1517, 1521]</li>
+                        </ul>
+                    </li>
+                    <li><strong>Codes</strong>:
+                        <ul>
+                            [cite_start]<li><strong>BCD (Binary-Coded Decimal)</strong>: Each decimal digit is represented by its own 4-bit binary code. [cite: 1803]</li>
+                            [cite_start]<li><strong>ASCII</strong>: A standard for encoding characters as binary numbers. [cite: 1797]</li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="focus-box">
+                    <strong>What to Focus On</strong>: Fluency and accuracy in base conversions are essential.
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="tab-content">
+                <h3>Tab 2: Signed Number Arithmetic</h3>
+                <p>This is how computers handle negative numbers.</p>
+                
+                <h4>2's Complement Representation</h4>
+                <ul>
+                    [cite_start]<li>This is the standard method for signed number representation in computers. [cite: 1596, 1600]</li>
+                    [cite_start]<li><strong>Positive Numbers</strong>: The most significant bit (MSB) is 0. The representation is the same as for unsigned numbers. [cite: 1685, 1687]</li>
+                    <li><strong>Negative Numbers</strong>: To find the negative of a number, you take its 2's complement. [cite_start]This is done by inverting all the bits (1's complement) and then adding 1. [cite: 1625] [cite_start]The MSB will be 1. [cite: 1689]</li>
+                    [cite_start]<li><strong>Range</strong>: For an n-bit number, the range is $[-2^{n-1}, 2^{n-1}-1]$. [cite: 1694]</li>
+                </ul>
+
+                <h4>Arithmetic and Overflow</h4>
+                <ul>
+                    [cite_start]<li><strong>Subtraction</strong>: The operation $A-B$ is performed by adding the 2's complement of B to A. [cite: 1712]</li>
+                    [cite_start]<li><strong>Overflow Detection</strong>: An overflow occurs when the result of an operation is outside the representable range. [cite: 1732] This can be detected in two ways:
+                        <ol>
+                            [cite_start]<li>When adding two numbers of the same sign, the result has the opposite sign. [cite: 1733]</li>
+                            [cite_start]<li>The carry-in to the sign bit and the carry-out from the sign bit are different. [cite: 1734, 1751]</li>
+                        </ol>
+                    </li>
+                </ul>
+
+                <div class="focus-box">
+                    <strong>What to Focus On</strong>: Master 2's complement. You must be able to represent numbers, perform subtraction via addition, and reliably detect overflow.
+                </div>
+            </div>
+
+            <hr>
+            
+            <div class="tab-content">
+                <h3>Tab 3: Floating-Point Numbers (IEEE 754)</h3>
+                [cite_start]<p>This standard defines how to represent real numbers, like 3.14. [cite: 1820]</p>
+                
+                <h4>Single-Precision (32-bit) Format</h4>
+                [cite_start]<p>A number is represented as $value=(-1)^{sign}(1.Mantissa) \times 2^{(Exponent-127)}$. [cite: 1841]</p>
+                <ul>
+                    [cite_start]<li><strong>Sign bit (1 bit)</strong>: 0 for positive, 1 for negative. [cite: 1849]</li>
+                    <li><strong>Exponent (8 bits)</strong>: Stored in a **biased format**. [cite_start]The actual exponent is found by subtracting a bias of 127 from the stored 8-bit unsigned value. [cite: 1853]</li>
+                    <li><strong>Mantissa (23 bits)</strong>: For normalized numbers, there is an implicit leading '1.' (the "hidden bit") that is not stored. [cite_start]The 23 bits represent the fractional part. [cite: 1854]</li>
+                </ul>
+                
+                <h4>Conversion Process (Decimal to IEEE 754)</h4>
+                <ol>
+                    [cite_start]<li>Convert the decimal number to binary (e.g., $36.5625_{10} = 100100.1001_2$). [cite: 1865]</li>
+                    [cite_start]<li>Normalize the binary number to the form $1.fraction \times 2^e$ (e.g., $1.001001001_2 \times 2^5$). [cite: 1867]</li>
+                    <li>The **sign bit** is determined by the number's sign.</li>
+                    <li>The **exponent** is calculated as $E = e + 127$. Convert this to an 8-bit unsigned binary number.</li>
+                    <li>The **mantissa** is the fractional part from the normalized binary number, padded to 23 bits.</li>
+                </ol>
+
+                <div class="focus-box">
+                    <strong>What to Focus On</strong>: Practice the conversion process in both directions: from decimal to the 32-bit hex representation, and from a 32-bit hex representation back to decimal.
+                </div>
+            </div>
+        </section>
+
+        <section id="section3" class="section">
+            <h2>⚙️ Section 3: Computer Organization and Architecture</h2>
+            <div class="tab-content">
+                <h3>Tab 1: Register Transfers and Bus Systems</h3>
+                <p>This covers the movement of data within the CPU.</p>
+
+                <h4>Register Transfer Language (RTL)</h4>
+                <ul>
+                    [cite_start]<li>A symbolic notation for describing micro-operations (data transfers and manipulations). [cite: 13919]</li>
+                    [cite_start]<li><code>R2 ← R1</code>: Transfer contents of R1 to R2. [cite: 13949]</li>
+                    [cite_start]<li><code>P: R2 ← R1</code>: A conditional transfer that occurs only if the control signal `P` is 1. [cite: 13960]</li>
+                </ul>
+
+                <h4>Common Bus System</h4>
+                [cite_start]<p>A shared pathway to transfer data between registers, reducing the number of connections. [cite: 7917]</p>
+                <ul>
+                    [cite_start]<li><strong>Implementation with Multiplexers</strong>: The select lines of the MUXs choose which register's data is placed on the bus. [cite: 14054]</li>
+                    [cite_start]<li><strong>Implementation with Three-State Buffers</strong>: A decoder enables only one register's buffers at a time; the rest are in a high-impedance state. [cite: 14122, 14148]</li>
+                </ul>
+                
+                <h4>Memory Transfer</h4>
+                <ul>
+                    [cite_start]<li><strong>Read</strong>: `DR ← M[AR]` — Transfer data from memory at the address in AR to the DR. [cite: 14174]</li>
+                    [cite_start]<li><strong>Write</strong>: `M[AR] ← DR` — Transfer data from DR to memory at the address in AR. [cite: 14178]</li>
+                </ul>
+
+                <div class="focus-box">
+                    <strong>What to Focus On</strong>: Be able to read RTL statements and determine the control signals (MUX selects, register loads) required to execute them on a given hardware diagram.
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="tab-content">
+                <h3>Tab 2: Arithmetic Logic Unit (ALU)</h3>
+                [cite_start]<p>The ALU is a combinational circuit that performs arithmetic and logic micro-operations. [cite: 7567]</p>
+                
+                <h4>Function and Design</h4>
+                <ul>
+                    [cite_start]<li>An ALU combines an arithmetic circuit (adder/subtractor), a logic circuit (AND, OR, XOR), and a shift circuit. [cite: 7708, 7709]</li>
+                    [cite_start]<li>Selection variables (e.g., $S_3, S_2, S_1, S_0$) control which function the ALU performs on its inputs. [cite: 4891]</li>
+                </ul>
+
+                <div class="focus-box">
+                    <strong>What to Focus On</strong>: Understand how an ALU uses selection lines to choose an operation. Be able to design a single stage (one-bit slice) of an ALU to perform a given set of operations.
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="tab-content">
+                <h3>Tab 3: Basic Computer Architecture</h3>
+                <p>This ties all the concepts together into a simple but functional computer model.</p>
+                
+                <h4>Key Registers & Components</h4>
+                <ul>
+                    [cite_start]<li><strong>PC (Program Counter)</strong>: Holds the address of the *next* instruction to be fetched. [cite: 11425]</li>
+                    [cite_start]<li><strong>AR (Address Register)</strong>: Holds the memory address for a read or write operation. [cite: 11424]</li>
+                    [cite_start]<li><strong>IR (Instruction Register)</strong>: Holds the instruction code currently being executed. [cite: 11422]</li>
+                    [cite_start]<li><strong>DR (Data Register)</strong>: Holds the operand read from memory. [cite: 11410]</li>
+                    [cite_start]<li><strong>AC (Accumulator)</strong>: A general-purpose register for holding operands and results. [cite: 11417]</li>
+                </ul>
+
+                <h4>Instruction Format and Addressing</h4>
+                <ul>
+                    [cite_start]<li><strong>Instruction Format</strong>: Composed of an Opcode, an Address part, and an 'I' bit for the addressing mode. [cite: 10911]</li>
+                    [cite_start]<li><strong>Direct Addressing (I=0)</strong>: The address part of the instruction contains the address of the operand. [cite: 11127, 11326]</li>
+                    [cite_start]<li><strong>Indirect Addressing (I=1)</strong>: The address part of the instruction contains the address of a pointer to the operand. [cite: 11129, 11329]</li>
+                </ul>
+                
+                <h4>Instruction Cycle</h4>
+                <p>The fundamental process of the CPU: Fetch -> Decode -> Execute.</p>
+                <ol>
+                    <li><strong>Fetch</strong>: Get the instruction from memory. `AR ← PC`, then `IR ← M[AR], PC ← PC+1`.</li>
+                    <li><strong>Decode</strong>: The control unit interprets the opcode in the IR. `AR ← IR(11-0)`.</li>
+                    <li><strong>Execute</strong>: The control unit generates the sequence of micro-operations to perform the instruction (e.g., `DR ← M[AR]`, then `AC ← AC + DR`).</li>
+                </ol>
+
+                <div class="focus-box">
+                    <strong>What to Focus On</strong>: Know the function of each key register. Be able to trace the contents of these registers through the fetch-decode-execute cycle for a given instruction like ADD or LDA.
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Good luck with your CEG2136 midterm! You've got this! 👍</p>
+    </footer>
+
+</body>
+</html>
