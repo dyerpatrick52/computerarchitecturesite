@@ -109,6 +109,33 @@
             border-radius: 4px;
             font-family: "Courier New", Courier, monospace;
         }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .diagram {
+            display: block;
+            margin: 1.5rem auto;
+            max-width: 80%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .circuit-diagram {
+             display: block;
+            margin: 1.5rem auto;
+            max-width: 60%;
+            height: auto;
+        }
         footer {
             text-align: center;
             padding: 1.5rem;
@@ -142,31 +169,47 @@
                 
                 <h4>Key Concepts</h4>
                 <ul>
-                    [cite_start]<li><strong>Axioms & Theorems</strong>: Key rules include the identity element ($A \cdot 1 = A$), complement ($A + A' = 1$), and the distributive law. [cite: 8280, 8281, 8282, 8283]</li>
-                    [cite_start]<li><strong>DeMorgan's Theorem</strong>: A critical tool for simplification. [cite: 6308, 6665]
+                    <li><strong>Axioms & Theorems</strong>: Boolean algebra is built on a set of rules. [cite_start]Key axioms include the identity element ($A \cdot 1 = A$) and complement ($A + A' = 1$)[cite: 10351, 10352]. [cite_start]Important theorems include idempotency ($A \cdot A = A$) and the null element ($A+1=1$)[cite: 10356, 10355].</li>
+                    [cite_start]<li><strong>DeMorgan's Theorem</strong>: A critical tool for simplification[cite: 547, 904].
                         <ul>
-                            [cite_start]<li>$\overline{A \cdot B} = \overline{A} + \overline{B}$ [cite: 6310]</li>
-                            [cite_start]<li>$\overline{A + B} = \overline{A} \cdot \overline{B}$ [cite: 6311]</li>
+                            [cite_start]<li>$\overline{A \cdot B} = \overline{A} + \overline{B}$ [cite: 549, 911]</li>
+                            [cite_start]<li>$\overline{A + B} = \overline{A} \cdot \overline{B}$ [cite: 550, 918]</li>
                         </ul>
                     </li>
-                    [cite_start]<li><strong>Canonical Forms</strong>: Standard ways to write functions. [cite: 6361]
+                    <li><strong>Canonical Forms</strong>: These are standard ways to write Boolean functions.
                         <ul>
-                            <li><strong>Sum-of-Products (SOP)</strong>: The function is expressed as a sum of minterms. [cite_start]Example: $F(A,B,C)=\Sigma m(1,3,5,6,7)$. [cite: 6362, 8320]</li>
-                            <li><strong>Product-of-Sums (POS)</strong>: The function is expressed as a product of maxterms. [cite_start]Example: $F(A,B,C)=\Pi M(0,2,4)$. [cite: 8655]</li>
+                            [cite_start]<li><strong>Sum-of-Products (SOP)</strong>: The function is expressed as a sum of minterms[cite: 601, 10390]. [cite_start]Example: $F(A,B,C)=\Sigma m(1,3,5,6,7)$[cite: 10392].</li>
+                            [cite_start]<li><strong>Product-of-Sums (POS)</strong>: The function is expressed as a product of maxterms[cite: 10723]. [cite_start]Example: $F(A,B,C)=\Pi M(0,2,4)$[cite: 10725].</li>
                         </ul>
                     </li>
                 </ul>
+
+                <h4>Example: Logic Gates Truth Table</h4>
+                
+                [cite_start]<p>This table summarizes the behavior of basic logic gates, which are the fundamental building blocks of digital circuits[cite: 552].</p>
+                <table>
+                    <tr><th>Name</th><th>Symbol</th><th>Function</th><th>Truth Table</th></tr>
+                    <tr><td>AND</td><td><img src="https://i.imgur.com/8Q9j7J1.png" alt="AND Gate Symbol" width="50"></td><td>$X = A \cdot B$</td><td>A=0,B=0,X=0<br>A=0,B=1,X=0<br>A=1,B=0,X=0<br>A=1,B=1,X=1</td></tr>
+                    <tr><td>OR</td><td><img src="https://i.imgur.com/G5g2o9Q.png" alt="OR Gate Symbol" width="50"></td><td>$X = A + B$</td><td>A=0,B=0,X=0<br>A=0,B=1,X=1<br>A=1,B=0,X=1<br>A=1,B=1,X=1</td></tr>
+                    <tr><td>NAND</td><td><img src="https://i.imgur.com/B9B2p3m.png" alt="NAND Gate Symbol" width="50"></td><td>$X = \overline{A \cdot B}$</td><td>A=0,B=0,X=1<br>A=0,B=1,X=1<br>A=1,B=0,X=1<br>A=1,B=1,X=0</td></tr>
+                     <tr><td>XOR</td><td><img src="https://i.imgur.com/eW7j6N8.png" alt="XOR Gate Symbol" width="50"></td><td>$X = A \oplus B$</td><td>A=0,B=0,X=0<br>A=0,B=1,X=1<br>A=1,B=0,X=1<br>A=1,B=1,X=0</td></tr>
+                </table>
+                [cite_start]<small>Source: Synthesized from CEG2136_Lecture_1.pdf [cite: 562, 570, 571, 582, 563]</small>
 
                 <h4>Karnaugh Map (K-Map) Simplification</h4>
-                [cite_start]<p>A K-map is a graphical method for simplifying logic functions. [cite: 6405]</p>
+                [cite_start]<p>A K-map is a graphical representation of a truth table used for simplifying logic functions[cite: 644].</p>
                 <ul>
-                    <li><strong>Prime Implicant (PI)</strong>: An implicant that cannot be covered by a larger, more simplified implicant. [cite_start]The minimal SOP form is a sum of PIs. [cite: 6561, 8500]</li>
-                    <li><strong>Essential Prime Implicant (EPI)</strong>: A PI that covers at least one minterm ('1') that no other PI can cover. [cite_start]All EPIs must be in the final solution. [cite: 6563]</li>
-                    <li><strong>Don't Care Conditions (d)</strong>: Input combinations that will never occur. [cite_start]They can be used as 1s or 0s to create larger groups for simplification. [cite: 6740]</li>
+                    [cite_start]<li><strong>Prime Implicant (PI)</strong>: An implicant that cannot be covered by a more reduced (simpler) implicant[cite: 800]. [cite_start]The minimal SOP form of a function is always a sum of prime implicants[cite: 10602].</li>
+                    [cite_start]<li><strong>Essential Prime Implicant (EPI)</strong>: A prime implicant that covers at least one minterm ('1') that no other prime implicant can cover[cite: 802]. [cite_start]All EPIs *must* be included in the minimal solution[cite: 802].</li>
                 </ul>
+                
+                <h4>Example: 4-Variable K-Map</h4>
+                
+                <img src="https://i.imgur.com/8N4H3lO.png" alt="4-variable K-map" class="diagram">
+                [cite_start]<small>Source: CEG2136_Lecture_1.pdf [cite: 853, 862, 867, 870, 879, 884, 890]</small>
 
                 <div class="focus-box">
-                    <strong>What to Focus On</strong>: Be able to simplify expressions algebraically and with K-maps. Master identifying PIs and EPIs. Know how to use don't care conditions effectively.
+                    <strong>What to Focus On</strong>: Be able to simplify Boolean expressions using algebraic rules. Master the K-map method for 3 and 4 variables. Quickly identify all Prime Implicants and, most importantly, the Essential Prime Implicants.
                 </div>
             </div>
 
@@ -174,22 +217,30 @@
 
             <div class="tab-content">
                 <h3>Tab 2: Combinational Circuits</h3>
-                [cite_start]<p>These are "memoryless" circuits where the output depends only on the current inputs. [cite: 6799, 6801]</p>
-
+                
                 <h4>Key Components</h4>
                 <ul>
                     <li><strong>Adders</strong>:
                         <ul>
-                            [cite_start]<li><strong>Half Adder</strong>: Adds two bits, producing a Sum ($A \oplus B$) and a Carry ($A \cdot B$). [cite: 6824, 6835, 6831]</li>
-                            <li><strong>Full Adder</strong>: Adds three bits (A, B, Carry-in). [cite_start]Can be built from two half adders and an OR gate. [cite: 6845, 6899]</li>
+                            [cite_start]<li><strong>Half Adder</strong>: Adds two bits, producing a Sum and a Carry output[cite: 1063]. [cite_start]$S = A \oplus B$, $C_{out} = A \cdot B$[cite: 1074, 1070].</li>
+                            [cite_start]<li><strong>Full Adder</strong>: Adds three bits (A, B, and a Carry-in), producing a Sum and a Carry-out[cite: 1084, 13740, 13687]. [cite_start]A full adder can be built from two half adders and an OR gate[cite: 13756].</li>
                         </ul>
                     </li>
-                    [cite_start]<li><strong>Decoders</strong>: Converts an n-bit input to one of up to $2^n$ unique outputs. [cite: 2462]</li>
-                    <li><strong>Multiplexers (MUX)</strong>: A data selector. [cite_start]It uses n select lines to route one of $2^n$ data inputs to a single output. [cite: 2502]</li>
+                    [cite_start]<li><strong>Decoders</strong>: A decoder converts an n-bit binary input into one of up to $2^n$ unique outputs[cite: 9763]. [cite_start]For a given input code, only one output line is active[cite: 9779].</li>
+                    [cite_start]<li><strong>Multiplexers (MUX)</strong>: A MUX is a data selector[cite: 9802]. [cite_start]It uses n select lines to route one of the $2^n$ data inputs to the output[cite: 9812].</li>
                 </ul>
+                
+                <h4>Example: 4-to-1 Multiplexer Circuit</h4>
+                
+
+[Image of A 4-to-1 multiplexer logic circuit diagram]
+
+                <img src="https://i.imgur.com/eBf2Vf8.png" alt="4-to-1 Multiplexer" class="diagram">
+                [cite_start]<small>Source: CEG2136_Lecture_3.pdf [cite: 9844, 9845, 9846, 9847, 9849, 9852, 9848]</small>
+
 
                 <div class="focus-box">
-                    <strong>What to Focus On</strong>: Understand how adders, decoders, and multiplexers work. A common exam question is implementing a Boolean function using a MUX of a specific size.
+                    <strong>What to Focus On</strong>: Understand the function of adders, decoders, and multiplexers. A very common exam question is to implement a given Boolean function using a multiplexer of a specific size.
                 </div>
             </div>
 
@@ -197,31 +248,39 @@
 
             <div class="tab-content">
                 <h3>Tab 3: Sequential Circuits & FSMs</h3>
-                [cite_start]<p>These circuits have memory; their output depends on current inputs and the past sequence of inputs. [cite: 3048]</p>
                 
-                <h4>Finite State Machines (FSMs)</h4>
-                <ul>
-                    [cite_start]<li><strong>Mealy Machine</strong>: Output depends on both the current state and the current input. [cite: 3102]</li>
-                    [cite_start]<li><strong>Moore Machine</strong>: Output depends only on the current state. [cite: 3117]</li>
-                </ul>
-
                 <h4>Flip-Flops (FFs)</h4>
-                <p>These are the fundamental 1-bit memory elements. [cite_start]You must know their characteristic tables (next state) and excitation tables (inputs needed for a transition). [cite: 9257]</p>
-                <ul>
-                    <li><strong>D Flip-Flop</strong>: The output Q follows the D input on the clock edge. [cite_start]Characteristic equation: $Q_{next} = D$. [cite: 3097]</li>
-                    <li><strong>JK Flip-Flop</strong>: A versatile FF where J=K=1 causes the state to toggle. [cite_start]Characteristic equation: $Q_{next} = J\overline{Q} + \overline{K}Q$. [cite: 3093]</li>
-                    <li><strong>T Flip-Flop</strong>: Toggles the state if T=1. [cite_start]Characteristic equation: $Q_{next} = T \oplus Q$. [cite: 3097]</li>
-                </ul>
+                [cite_start]<p>These are the fundamental 1-bit memory elements of sequential circuits[cite: 4693, 4741].</p>
                 
-                <h4>Registers and Counters</h4>
-                <ul>
-                    [cite_start]<li><strong>Registers</strong>: A group of flip-flops used to store multiple bits of data. [cite: 2610]</li>
-                    [cite_start]<li><strong>Shift Registers</strong>: A chain of flip-flops where data can be shifted serially. [cite: 2799]</li>
-                    [cite_start]<li><strong>Counters</strong>: A register that goes through a predetermined sequence of states. [cite: 5450]</li>
-                </ul>
+                <h4>Example: Flip-Flop Excitation Tables</h4>
+                [cite_start]<p>An excitation table lists the required inputs for a given change of state[cite: 8150]. You must know these for circuit design.</p>
+                <table>
+                    <tr><th>Q(t)</th><th>Q(t+1)</th><th>J</th><th>K</th><th>D</th><th>T</th></tr>
+                    <tr><td>0</td><td>0</td><td>0</td><td>X</td><td>0</td><td>0</td></tr>
+                    <tr><td>0</td><td>1</td><td>1</td><td>X</td><td>1</td><td>1</td></tr>
+                    <tr><td>1</td><td>0</td><td>X</td><td>1</td><td>0</td><td>1</td></tr>
+                    <tr><td>1</td><td>1</td><td>X</td><td>0</td><td>1</td><td>0</td></tr>
+                </table>
+                [cite_start]<small>Source: Synthesized from CEG2136_Lecture_2.pdf [cite: 4725, 4729, 8154, 8155, 8158, 8159]</small>
+
+                <h4>Sequential Circuit Design Procedure</h4>
+                [cite_start]<p>This is a core process for the course[cite: 4807].</p>
+                <ol>
+                    [cite_start]<li><strong>State Diagram</strong>: Create a state diagram (Mealy or Moore) from the problem description[cite: 4809].</li>
+                    [cite_start]<li><strong>State Table</strong>: Convert the diagram into a state table[cite: 4810].</li>
+                    <li><strong>State Assignment</strong>: Assign a unique binary code to each state. [cite_start]This creates the **transition table**[cite: 4812].</li>
+                    [cite_start]<li><strong>Excitation Table</strong>: Choose a flip-flop type and use its excitation table to determine the required inputs for each flip-flop[cite: 4813].</li>
+                    [cite_start]<li><strong>Excitation Equations</strong>: Use K-maps to derive the simplified Boolean expressions for each flip-flop input and the circuit output(s)[cite: 4814].</li>
+                    [cite_start]<li><strong>Draw the Circuit</strong>: Implement the equations with logic gates and flip-flops[cite: 4815].</li>
+                </ol>
+
+                <h4>Example: Synchronous Counter Circuit</h4>
+                
+                <img src="https://i.imgur.com/8S42eXl.png" alt="Synchronous Counter" class="circuit-diagram">
+                [cite_start]<small>Source: CEG2136_Lecture_2.pdf [cite: 5496, 5497]</small>
 
                 <div class="focus-box">
-                    <strong>What to Focus On</strong>: Practice the full sequential circuit design procedure (state diagram -> state table -> state assignment -> excitation table -> equations -> circuit). Designing a sequence detector is a classic problem.
+                    <strong>What to Focus On</strong>: Practice the full design procedure. [cite_start]A common problem is designing a "sequence detector" (e.g., a circuit that outputs 1 when it sees "1001")[cite: 8228].
                 </div>
             </div>
         </section>
@@ -231,23 +290,23 @@
             <div class="tab-content">
                 <h3>Tab 1: Number Systems</h3>
                 
-                <h4>Key Concepts</h4>
-                <ul>
-                    [cite_start]<li><strong>Bases</strong>: Be proficient with Binary (base 2), Octal (base 8), Decimal (base 10), and Hexadecimal (base 16). [cite: 1320]</li>
-                    [cite_start]<li><strong>Conversions</strong>: You must be able to convert any number, including fractions, between these bases. [cite: 1325, 1404, 1405]
-                        <ul>
-                            [cite_start]<li><strong>Binary to Hex/Octal</strong>: Group bits into sets of 4 (for hex) or 3 (for octal). [cite: 1517, 1521]</li>
-                        </ul>
-                    </li>
-                    <li><strong>Codes</strong>:
-                        <ul>
-                            [cite_start]<li><strong>BCD (Binary-Coded Decimal)</strong>: Each decimal digit is represented by its own 4-bit binary code. [cite: 1803]</li>
-                            [cite_start]<li><strong>ASCII</strong>: A standard for encoding characters as binary numbers. [cite: 1797]</li>
-                        </ul>
-                    </li>
-                </ul>
+                <h4>Example: Number System Conversion Table</h4>
+                
+                <table>
+                    <tr><th>Decimal</th><th>Binary</th><th>Octal</th><th>Hexadecimal</th></tr>
+                    <tr><td>0</td><td>0000</td><td>0</td><td>0</td></tr>
+                    <tr><td>...</td><td>...</td><td>...</td><td>...</td></tr>
+                    <tr><td>7</td><td>0111</td><td>7</td><td>7</td></tr>
+                    <tr><td>8</td><td>1000</td><td>10</td><td>8</td></tr>
+                    <tr><td>9</td><td>1001</td><td>11</td><td>9</td></tr>
+                    <tr><td>10</td><td>1010</td><td>12</td><td>A</td></tr>
+                    <tr><td>...</td><td>...</td><td>...</td><td>...</td></tr>
+                    <tr><td>15</td><td>1111</td><td>17</td><td>F</td></tr>
+                </table>
+                [cite_start]<small>Source: Synthesized from CEG2136_Lecture_6.pdf [cite: 11340, 11355]</small>
+                
                 <div class="focus-box">
-                    <strong>What to Focus On</strong>: Fluency and accuracy in base conversions are essential.
+                    <strong>What to Focus On</strong>: Speed and accuracy in base conversions are non-negotiable. Be able to convert between binary, octal, decimal, and hexadecimal for both integers and fractions.
                 </div>
             </div>
 
@@ -255,29 +314,23 @@
 
             <div class="tab-content">
                 <h3>Tab 2: Signed Number Arithmetic</h3>
-                <p>This is how computers handle negative numbers.</p>
                 
                 <h4>2's Complement Representation</h4>
                 <ul>
-                    [cite_start]<li>This is the standard method for signed number representation in computers. [cite: 1596, 1600]</li>
-                    [cite_start]<li><strong>Positive Numbers</strong>: The most significant bit (MSB) is 0. The representation is the same as for unsigned numbers. [cite: 1685, 1687]</li>
-                    <li><strong>Negative Numbers</strong>: To find the negative of a number, you take its 2's complement. [cite_start]This is done by inverting all the bits (1's complement) and then adding 1. [cite: 1625] [cite_start]The MSB will be 1. [cite: 1689]</li>
-                    [cite_start]<li><strong>Range</strong>: For an n-bit number, the range is $[-2^{n-1}, 2^{n-1}-1]$. [cite: 1694]</li>
+                    [cite_start]<li>This is the most common system for signed numbers[cite: 11517]. [cite_start]A negative number is found by taking the 1's complement (inverting all bits) and adding 1[cite: 11469, 1909].</li>
+                    [cite_start]<li>The range of an n-bit number is $[-2^{n-1}, 2^{n-1}-1]$[cite: 11540, 1989].</li>
                 </ul>
 
-                <h4>Arithmetic and Overflow</h4>
-                <ul>
-                    [cite_start]<li><strong>Subtraction</strong>: The operation $A-B$ is performed by adding the 2's complement of B to A. [cite: 1712]</li>
-                    [cite_start]<li><strong>Overflow Detection</strong>: An overflow occurs when the result of an operation is outside the representable range. [cite: 1732] This can be detected in two ways:
-                        <ol>
-                            [cite_start]<li>When adding two numbers of the same sign, the result has the opposite sign. [cite: 1733]</li>
-                            [cite_start]<li>The carry-in to the sign bit and the carry-out from the sign bit are different. [cite: 1734, 1751]</li>
-                        </ol>
-                    </li>
-                </ul>
+                <h4>Example: 2's Complement Circle</h4>
+                
+                <img src="https://i.imgur.com/eB9yB2l.png" alt="2's Complement Circle" class="diagram">
+                [cite_start]<small>Source: CEG2136_Lecture_6.pdf [cite: 11474, 11482, 11488, 11492, 11498, 11503, 11505, 11507]</small>
+
+                <h4>Overflow Detection</h4>
+                An overflow occurs if the result is outside the representable range. [cite_start]This happens if the carry-in to the sign bit is different from the carry-out of the sign bit ($C_{n} \oplus C_{n-1} = 1$)[cite: 2192, 11578].
 
                 <div class="focus-box">
-                    <strong>What to Focus On</strong>: Master 2's complement. You must be able to represent numbers, perform subtraction via addition, and reliably detect overflow.
+                    <strong>What to Focus On</strong>: Be an expert in 2's complement. Know how to represent numbers, perform subtraction via addition, and reliably detect overflow.
                 </div>
             </div>
 
@@ -285,27 +338,20 @@
             
             <div class="tab-content">
                 <h3>Tab 3: Floating-Point Numbers (IEEE 754)</h3>
-                [cite_start]<p>This standard defines how to represent real numbers, like 3.14. [cite: 1820]</p>
                 
                 <h4>Single-Precision (32-bit) Format</h4>
-                [cite_start]<p>A number is represented as $value=(-1)^{sign}(1.Mantissa) \times 2^{(Exponent-127)}$. [cite: 1841]</p>
-                <ul>
-                    [cite_start]<li><strong>Sign bit (1 bit)</strong>: 0 for positive, 1 for negative. [cite: 1849]</li>
-                    <li><strong>Exponent (8 bits)</strong>: Stored in a **biased format**. [cite_start]The actual exponent is found by subtracting a bias of 127 from the stored 8-bit unsigned value. [cite: 1853]</li>
-                    <li><strong>Mantissa (23 bits)</strong>: For normalized numbers, there is an implicit leading '1.' (the "hidden bit") that is not stored. [cite_start]The 23 bits represent the fractional part. [cite: 1854]</li>
-                </ul>
+                [cite_start]<p>A number is represented as $value=(-1)^{sign}(1+\sum_{i=1}^{23}b_{-i}2^{-i}) \times 2^{(e-127)}$[cite: 11685].</p>
                 
-                <h4>Conversion Process (Decimal to IEEE 754)</h4>
-                <ol>
-                    [cite_start]<li>Convert the decimal number to binary (e.g., $36.5625_{10} = 100100.1001_2$). [cite: 1865]</li>
-                    [cite_start]<li>Normalize the binary number to the form $1.fraction \times 2^e$ (e.g., $1.001001001_2 \times 2^5$). [cite: 1867]</li>
-                    <li>The **sign bit** is determined by the number's sign.</li>
-                    <li>The **exponent** is calculated as $E = e + 127$. Convert this to an 8-bit unsigned binary number.</li>
-                    <li>The **mantissa** is the fractional part from the normalized binary number, padded to 23 bits.</li>
-                </ol>
+                <img src="https://i.imgur.com/n14zX1S.png" alt="IEEE 754 Single Precision" class="diagram">
+                [cite_start]<small>Source: CEG2136_Lecture_6.pdf [cite: 11678, 2252, 2256, 2258]</small>
+                <ul>
+                    [cite_start]<li><strong>Sign bit (1 bit)</strong>: 0 for positive, 1 for negative[cite: 11693, 2259].</li>
+                    <li><strong>Exponent (8 bits)</strong>: Stored in a **biased format**. [cite_start]The actual exponent is found by subtracting a bias of 127[cite: 11697, 2262].</li>
+                    <li><strong>Mantissa (23 bits)</strong>: For normalized numbers, there is an implicit leading '1.' (the "hidden bit") [cite_start]that is not stored[cite: 11698, 2265].</li>
+                </ul>
 
                 <div class="focus-box">
-                    <strong>What to Focus On</strong>: Practice the conversion process in both directions: from decimal to the 32-bit hex representation, and from a 32-bit hex representation back to decimal.
+                    <strong>What to Focus On</strong>: Practice the conversion process in both directions: from a decimal number to its 32-bit hex representation, and from a 32-bit hex representation back to decimal.
                 </div>
             </div>
         </section>
@@ -314,30 +360,21 @@
             <h2>⚙️ Section 3: Computer Organization and Architecture</h2>
             <div class="tab-content">
                 <h3>Tab 1: Register Transfers and Bus Systems</h3>
-                <p>This covers the movement of data within the CPU.</p>
-
-                <h4>Register Transfer Language (RTL)</h4>
-                <ul>
-                    [cite_start]<li>A symbolic notation for describing micro-operations (data transfers and manipulations). [cite: 13919]</li>
-                    [cite_start]<li><code>R2 ← R1</code>: Transfer contents of R1 to R2. [cite: 13949]</li>
-                    [cite_start]<li><code>P: R2 ← R1</code>: A conditional transfer that occurs only if the control signal `P` is 1. [cite: 13960]</li>
-                </ul>
-
-                <h4>Common Bus System</h4>
-                [cite_start]<p>A shared pathway to transfer data between registers, reducing the number of connections. [cite: 7917]</p>
-                <ul>
-                    [cite_start]<li><strong>Implementation with Multiplexers</strong>: The select lines of the MUXs choose which register's data is placed on the bus. [cite: 14054]</li>
-                    [cite_start]<li><strong>Implementation with Three-State Buffers</strong>: A decoder enables only one register's buffers at a time; the rest are in a high-impedance state. [cite: 14122, 14148]</li>
-                </ul>
                 
-                <h4>Memory Transfer</h4>
+                <h4>Register Transfer Language (RTL)</h4>
+                [cite_start]<p>A symbolic notation for describing the micro-operations that happen in a computer[cite: 13356].</p>
                 <ul>
-                    [cite_start]<li><strong>Read</strong>: `DR ← M[AR]` — Transfer data from memory at the address in AR to the DR. [cite: 14174]</li>
-                    [cite_start]<li><strong>Write</strong>: `M[AR] ← DR` — Transfer data from DR to memory at the address in AR. [cite: 14178]</li>
+                    [cite_start]<li><code>R2 ← R1</code>: Transfer contents of R1 to R2[cite: 13386].</li>
+                    [cite_start]<li><code>P: R2 ← R1</code>: A conditional transfer that only happens if the control signal `P` is 1[cite: 13397, 13404].</li>
                 </ul>
 
+                <h4>Example: Common Bus with Multiplexers</h4>
+                
+                <img src="https://i.imgur.com/lJ4lYVn.png" alt="Bus with MUX" class="diagram">
+                [cite_start]<small>Source: CEG2136_Lecture_7.pdf [cite: 13494, 13501, 13502, 13503, 13504, 13523, 13524, 13525, 13526]</small>
+                
                 <div class="focus-box">
-                    <strong>What to Focus On</strong>: Be able to read RTL statements and determine the control signals (MUX selects, register loads) required to execute them on a given hardware diagram.
+                    <strong>What to Focus On</strong>: Be able to read RTL and determine the control signals (e.g., MUX select lines, register `LD` signals) needed to perform a given transfer on a specific hardware diagram.
                 </div>
             </div>
 
@@ -345,16 +382,15 @@
 
             <div class="tab-content">
                 <h3>Tab 2: Arithmetic Logic Unit (ALU)</h3>
-                [cite_start]<p>The ALU is a combinational circuit that performs arithmetic and logic micro-operations. [cite: 7567]</p>
-                
-                <h4>Function and Design</h4>
-                <ul>
-                    [cite_start]<li>An ALU combines an arithmetic circuit (adder/subtractor), a logic circuit (AND, OR, XOR), and a shift circuit. [cite: 7708, 7709]</li>
-                    [cite_start]<li>Selection variables (e.g., $S_3, S_2, S_1, S_0$) control which function the ALU performs on its inputs. [cite: 4891]</li>
-                </ul>
+                [cite_start]<p>The ALU is a combinational circuit that performs arithmetic and logic micro-operations[cite: 4346].</p>
 
+                <h4>Example: 4-bit Adder-Subtractor Circuit</h4>
+                
+                <img src="https://i.imgur.com/8Qj8j4i.png" alt="Adder-Subtractor Circuit" class="circuit-diagram">
+                [cite_start]<small>Source: CEG2136_Lecture_7.pdf [cite: 13888, 13889, 13890, 13891, 13892, 13893, 13894, 13895, 13909, 13900, 13901, 13902, 13903]</small>
+                
                 <div class="focus-box">
-                    <strong>What to Focus On</strong>: Understand how an ALU uses selection lines to choose an operation. Be able to design a single stage (one-bit slice) of an ALU to perform a given set of operations.
+                    <strong>What to Focus On</strong>: Understand how an ALU uses selection lines to choose an operation. Be able to design a single stage (one-bit slice) of an ALU using MUXs and a full adder.
                 </div>
             </div>
 
@@ -362,34 +398,26 @@
 
             <div class="tab-content">
                 <h3>Tab 3: Basic Computer Architecture</h3>
-                <p>This ties all the concepts together into a simple but functional computer model.</p>
                 
                 <h4>Key Registers & Components</h4>
+                
+                <img src="https://i.imgur.com/zW0c02l.png" alt="Basic Computer Architecture" class="diagram">
+                [cite_start]<small>Source: CEG2136_Lecture_9.pdf [cite: 14095, 14100, 14102, 14104, 14115, 14116, 14130, 14139, 14141]</small>
                 <ul>
-                    [cite_start]<li><strong>PC (Program Counter)</strong>: Holds the address of the *next* instruction to be fetched. [cite: 11425]</li>
-                    [cite_start]<li><strong>AR (Address Register)</strong>: Holds the memory address for a read or write operation. [cite: 11424]</li>
-                    [cite_start]<li><strong>IR (Instruction Register)</strong>: Holds the instruction code currently being executed. [cite: 11422]</li>
-                    [cite_start]<li><strong>DR (Data Register)</strong>: Holds the operand read from memory. [cite: 11410]</li>
-                    [cite_start]<li><strong>AC (Accumulator)</strong>: A general-purpose register for holding operands and results. [cite: 11417]</li>
+                    [cite_start]<li><strong>PC (Program Counter)</strong>: Holds the address of the *next* instruction to be fetched[cite: 13380, 14067, 14483].</li>
+                    [cite_start]<li><strong>AR (Address Register)</strong>: Holds the memory address for a read or write operation[cite: 13378, 14067, 14482].</li>
+                    [cite_start]<li><strong>IR (Instruction Register)</strong>: Holds the instruction code currently being executed[cite: 13381, 14067, 14480].</li>
+                    [cite_start]<li><strong>AC (Accumulator)</strong>: A general-purpose register for holding operands and results[cite: 14010, 14067, 14475].</li>
                 </ul>
 
-                <h4>Instruction Format and Addressing</h4>
+                <h4>Instruction Formats and Addressing Modes</h4>
                 <ul>
-                    [cite_start]<li><strong>Instruction Format</strong>: Composed of an Opcode, an Address part, and an 'I' bit for the addressing mode. [cite: 10911]</li>
-                    [cite_start]<li><strong>Direct Addressing (I=0)</strong>: The address part of the instruction contains the address of the operand. [cite: 11127, 11326]</li>
-                    [cite_start]<li><strong>Indirect Addressing (I=1)</strong>: The address part of the instruction contains the address of a pointer to the operand. [cite: 11129, 11329]</li>
+                    [cite_start]<li><strong>Direct Mode (I=0)</strong>: The address part of the instruction contains the address of the operand[cite: 13985, 14185, 14384].</li>
+                    [cite_start]<li><strong>Indirect Mode (I=1)</strong>: The address part contains the address of a pointer to the operand[cite: 13987, 14187, 14387].</li>
                 </ul>
-                
-                <h4>Instruction Cycle</h4>
-                <p>The fundamental process of the CPU: Fetch -> Decode -> Execute.</p>
-                <ol>
-                    <li><strong>Fetch</strong>: Get the instruction from memory. `AR ← PC`, then `IR ← M[AR], PC ← PC+1`.</li>
-                    <li><strong>Decode</strong>: The control unit interprets the opcode in the IR. `AR ← IR(11-0)`.</li>
-                    <li><strong>Execute</strong>: The control unit generates the sequence of micro-operations to perform the instruction (e.g., `DR ← M[AR]`, then `AC ← AC + DR`).</li>
-                </ol>
 
                 <div class="focus-box">
-                    <strong>What to Focus On</strong>: Know the function of each key register. Be able to trace the contents of these registers through the fetch-decode-execute cycle for a given instruction like ADD or LDA.
+                    <strong>What to Focus On</strong>: Memorize the names and functions of the key registers. Be able to trace the contents of these registers through the fetch-decode-execute cycle for a single instruction.
                 </div>
             </div>
         </section>
